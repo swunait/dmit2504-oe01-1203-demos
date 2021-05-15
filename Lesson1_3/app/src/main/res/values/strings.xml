@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Lesson1_3</string>
+    <string name="activity_main_send_data">Send Data</string>
+    <string name="activity_receive_close">Close</string>
+
+</resources>
