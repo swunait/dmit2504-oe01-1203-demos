@@ -17,18 +17,16 @@ class ChatterReceiveActivity : AppCompatActivity() {
         setContentView(R.layout.activity_chatter_receive)
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://capstone1.app.dmitcapstone.ca/api/")
+            .baseUrl("http://www.youcode.ca/")
             .addConverterFactory(ScalarsConverterFactory.create())
-            .addConverterFactory(JacksonConverterFactory.create())
             .build();
 
-        val httpClient = retrofit.create(ChatterService::class.java)
+        val youcodeService = retrofit.create(YoucodeService::class.java)
 
-        val callGetChatters = httpClient.getChatters();
+        val listJSONSevlet = youcodeService.listJSONServlet();
 
-        callGetChatters.enqueue(object : Callback<String> {
+        listJSONSevlet.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
-//                TODO("Not yet implemented")
                 if (response.isSuccessful) {
                     val textbox = findViewById<TextView>(R.id.textbox_receive_chatter)
                     textbox.text = response.body()
@@ -38,7 +36,6 @@ class ChatterReceiveActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<String>, t: Throwable) {
-//                TODO("Not yet implemented")
                 Log.e("ChatterReceiveActivity","Failed to communicate with web api.")
             }
 

@@ -34,7 +34,7 @@ class ChatterSendActivity : AppCompatActivity(), View.OnClickListener {
                 val message = dataEditText.text.toString()
                 postToChatter(message)
                 dataEditText.setText("")
-                Toast.makeText(this, "POST successful", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(this, "POST successful", Toast.LENGTH_SHORT).show()
             }
             R.id.button_view_jitters -> {
                 val intent = Intent(this, ChatterReceiveActivity::class.java)
@@ -46,7 +46,7 @@ class ChatterSendActivity : AppCompatActivity(), View.OnClickListener {
     fun postToChatter(message: String) {
         val retrofit = Retrofit.Builder()
             .baseUrl("http://www.youcode.ca/")
-            .addConverterFactory(ScalarsConverterFactory.create())
+//            .addConverterFactory(ScalarsConverterFactory.create())
             .build()
 
         val youcodeService = retrofit.create(YoucodeService::class.java)
@@ -55,11 +55,11 @@ class ChatterSendActivity : AppCompatActivity(), View.OnClickListener {
 
         postCall.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                TODO("Not yet implemented")
+                Toast.makeText(this@ChatterSendActivity,"POST successful", Toast.LENGTH_SHORT).show()
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                TODO("Not yet implemented")
+                Toast.makeText(this@ChatterSendActivity, "POST failure", Toast.LENGTH_SHORT).show()
             }
         })
     }
