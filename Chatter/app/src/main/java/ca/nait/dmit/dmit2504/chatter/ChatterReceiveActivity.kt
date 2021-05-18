@@ -1,8 +1,12 @@
 package ca.nait.dmit.dmit2504.chatter
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.TextView
 import retrofit2.Call
 import retrofit2.Callback
@@ -41,6 +45,31 @@ class ChatterReceiveActivity : AppCompatActivity() {
 
         })
 
+    }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        //return super.onCreateOptionsMenu(menu)
+        val inflater : MenuInflater = menuInflater
+        inflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        //return super.onOptionsItemSelected(item)
+        when (item.itemId) {
+            R.id.menu_item_view_chats -> {
+//                val intent = Intent(this, ChatterReceiveActivity::class.java)
+//                startActivity(intent)
+            }
+            R.id.menu_item_view_list -> {
+                val intent = Intent(this, ChatterSendActivity::class.java)
+                startActivity(intent)
+            }
+            R.id.menu_item_view_jitter_list -> {
+                val listViewIntent = Intent(this, ChatterListViewActivity::class.java)
+                startActivity(listViewIntent)
+            }
+        }
+        return true
     }
 }
