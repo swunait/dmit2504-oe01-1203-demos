@@ -42,6 +42,7 @@ class ChatterListViewActivity : AppCompatActivity() {
                         val loginNameList = mutableListOf<String>()
                         val messageList = mutableListOf<String>()
                         val dateList = mutableListOf<String>()
+                        // for (int index =0 ; index < stringArray.size(); index += 3 )
                         for (index in 0 until stringArray.size step 3) {
                             val loginName: String = stringArray[index]
                             val message: String = stringArray[index+1]
@@ -51,7 +52,6 @@ class ChatterListViewActivity : AppCompatActivity() {
                             messageList.add(message)
                             dateList.add(date)
                         }
-
 
                         //Log.i(TAG, jittersString)
 
