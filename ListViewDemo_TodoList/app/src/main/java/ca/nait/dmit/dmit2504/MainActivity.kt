@@ -4,10 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.ListView
-import android.widget.Toast
+import android.widget.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -29,6 +26,22 @@ class MainActivity : AppCompatActivity() {
         // Set the adpater of the ListView
         todoListView?.adapter = todoDataAdapter
 
+        // Set and handle the onItemClick event of the ListView
+        todoListView?.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
+            val toastMessage = "Selected ${todoList[position]}"
+            Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
+        }
+
+        // Set and handle the onItemLongClick event of the ListView
+        todoListView?.onItemLongClickListener = AdapterView.OnItemLongClickListener { parent, view, position, id ->
+            // Remove the item at the selected position
+            todoList.removeAt(position)
+            // Notify the list view that data has been changed
+            todoDataAdapter?.notifyDataSetChanged()
+            // return true to indicate event has been processed
+            true
+        }
+
     }
 
     fun onAddTodoClick(view: View?) {
@@ -40,10 +53,10 @@ class MainActivity : AppCompatActivity() {
             // Clear the EditText field
             todoEditText?.setText("")
             // Notify the ListView data has changed
-            todoDataAdapter?.notifyDataSetChanged()
+           todoDataAdapter?.notifyDataSetChanged()
         } else {
             // Display an error message using a Toast
-            Toast.makeText(this, "Todo name is require", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Todo name is required", Toast.LENGTH_SHORT).show()
         }
 
     }
