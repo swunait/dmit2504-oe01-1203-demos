@@ -1,4 +1,7 @@
 package ca.nait.dmit.listviewdemo_countrycapital
 
-class Country {
+class Country(
+    val name: String,
+    val capital: String
+) {
 }
