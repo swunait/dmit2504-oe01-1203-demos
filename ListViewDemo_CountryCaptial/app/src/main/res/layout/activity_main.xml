@@ -9,20 +9,17 @@
 
     <EditText
         android:id="@+id/activity_main_countryEditText"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="country name"
         android:autofillHints="country name"
-       />
+        android:ems="10"
+        android:hint="country name"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/activity_main_capitalEditText"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="capital city"
@@ -31,9 +28,8 @@
 
     <Button
         android:id="@+id/activity_main_submitButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:onClick="onSubmitClick"
         android:text="Submit" />
 
@@ -41,5 +37,5 @@
         android:id="@+id/activity_main_countryListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        />
 </LinearLayout>
