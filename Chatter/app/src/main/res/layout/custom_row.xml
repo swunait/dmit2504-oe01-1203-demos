@@ -4,7 +4,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <TextView android:id="@+id/sender"
+    <TextView android:id="@+id/custom_row_sender"
         android:textSize="12sp"
         android:textStyle="bold"
         android:textColor="#CCFFFF00"
@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"/>
 
-    <TextView android:id="@+id/date"
+    <TextView android:id="@+id/custom_row_date"
         android:typeface="sans"
         android:textSize="12sp"
         android:textStyle="italic"
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"/>
 
-    <TextView android:id="@+id/text"
+    <TextView android:id="@+id/custom_row_text"
         android:textSize="14sp"
         android:textStyle="bold"
         android:layout_below="@id/sender"

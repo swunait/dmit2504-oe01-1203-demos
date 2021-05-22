@@ -12,6 +12,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import java.io.BufferedReader
+import java.io.StringReader
+import java.lang.Exception
 
 class ChatterListViewActivity : AppCompatActivity() {
 
@@ -32,28 +35,25 @@ class ChatterListViewActivity : AppCompatActivity() {
 
         listJitterServletCall.enqueue(object : Callback<String> {
             override fun onResponse(call: Call<String>, response: Response<String>) {
-                //TODO("Not yet implemented")
                 if (response.isSuccessful) {
                     val jittersString : String? = response.body()
                     if (jittersString != null) {
-                        val delimiter = "\r\n"
-                        val stringArray = jittersString.split(delimiter)
+                        val reader = BufferedReader(StringReader(jittersString))
+                        var line = reader.readLine()
+                        while (line != null) {
+                            try {
+                                val loginName = line
+                                val data = reader.readLine()
+                                val date = reader.readLine()
+                                val currentJitter = Jitter(loginName,data,date)
+                                // call the addItem method of the data adapter
 
-                        val loginNameList = mutableListOf<String>()
-                        val messageList = mutableListOf<String>()
-                        val dateList = mutableListOf<String>()
-                        // for (int index =0 ; index < stringArray.size(); index += 3 )
-                        for (index in 0 until stringArray.size step 3) {
-                            val loginName: String = stringArray[index]
-                            val message: String = stringArray[index+1]
-                            val date: String = stringArray[index+2]
+                                
+                                line = reader.readLine()
+                            } catch(e: Exception) {
 
-                            loginNameList.add(loginName)
-                            messageList.add(message)
-                            dateList.add(date)
+                            }
                         }
-
-                        //Log.i(TAG, jittersString)
 
                     }
                     //Log.i(TAG, jittersString!!)
