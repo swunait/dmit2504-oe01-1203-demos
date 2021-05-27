@@ -14,4 +14,7 @@
         android:id="@+id/menu_item_view_jitter_list"
         android:title="View List" />
 
+    <item android:id="@+id/menu_item_settings"
+        android:title="Settings" />
+
 </menu>

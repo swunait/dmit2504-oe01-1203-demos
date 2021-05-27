@@ -34,6 +34,11 @@ android {
 
 dependencies {
 
+    // for AndroidX preferences library
+    implementation 'androidx.preference:preference:1.1.1'
+    implementation 'androidx.preference:preference-ktx:1.1.1'
+
+    // for Retrofit HTTP Client library
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
     implementation 'com.squareup.retrofit2:converter-jackson:2.9.0'

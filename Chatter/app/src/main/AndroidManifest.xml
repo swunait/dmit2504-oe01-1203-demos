@@ -12,8 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Chatter"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ChatterListViewActivity"></activity>
-        <activity android:name=".ChatterReceiveActivity"></activity>
+        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".ChatterListViewActivity" />
+        <activity android:name=".ChatterReceiveActivity" />
         <activity android:name=".ChatterSendActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
