@@ -5,4 +5,25 @@
     <string name="send_chatter_hint">Enter data here</string>
     <string name="send_chatter_button_text">Send Chat</string>
     <string name="receive_chatter_title">Start Something</string>
+
+    <string-array name="color_names">
+        <item name="red">Red</item>
+        <item name="green">Green</item>
+        <item name="blue">Blue</item>
+        <item name="gray">Gray</item>
+        <item name="white">White</item>
+        <item name="black">Black</item>
+        <item name="yellow">Yellow</item>
+    </string-array>
+
+    <string-array name="color_values">
+        <item name="red">#990000</item>
+        <item name="green">#009900</item>
+        <item name="blue">#000099</item>
+        <item name="gray">#cccccc</item>
+        <item name="white">#ffffff</item>
+        <item name="black">#000000</item>
+        <item name="Yellow">Yellow</item>
+    </string-array>
+
 </resources>

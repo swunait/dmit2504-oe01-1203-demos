@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:defaultValue="dmit2504swu"
+        android:key="user_name"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="User Name"
+        android:summary="Use this to change your alias"/>
+    <EditTextPreference
+        android:defaultValue="Password2504"
+        android:key="user_password"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="User Password"
+        android:inputType="textPassword"
+        android:summary="Use this to edit your password"/>
+    <EditTextPreference
+        android:defaultValue="#009900"
+        android:key="main_bg_color"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Activity Background"
+        android:summary="Enter a color value (#FFAA33) for the main screen"/>
+    <ListPreference
+        android:defaultValue="#009900"
+        android:entries="@array/color_names"
+        android:entryValues="@array/color_values"
+        android:key="main_bg_color_list"
+        android:title="Background Color"
+        android:summary="Select the background color for the main screen"/>
+
+</PreferenceScreen>

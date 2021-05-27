@@ -25,7 +25,7 @@
     <TextView android:id="@+id/custom_row_text"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:layout_below="@id/sender"
+        android:layout_below="@id/custom_row_sender"
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"/>
 
