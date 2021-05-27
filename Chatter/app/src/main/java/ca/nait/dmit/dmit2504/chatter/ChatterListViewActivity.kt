@@ -48,7 +48,7 @@ class ChatterListViewActivity : AppCompatActivity() {
                                 val currentJitter = Jitter(loginName,data,date)
                                 // call the addItem method of the data adapter
 
-                                
+
                                 line = reader.readLine()
                             } catch(e: Exception) {
 
