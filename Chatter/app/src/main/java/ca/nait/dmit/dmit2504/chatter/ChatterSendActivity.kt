@@ -18,7 +18,8 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
-class ChatterSendActivity : AppCompatActivity(), View.OnClickListener{ //, SharedPreferences.OnSharedPreferenceChangeListener {
+class ChatterSendActivity : AppCompatActivity(), View.OnClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chatter_send)
@@ -28,6 +29,10 @@ class ChatterSendActivity : AppCompatActivity(), View.OnClickListener{ //, Share
 
         val viewJittersButton = findViewById<Button>(R.id.button_view_jitters)
         viewJittersButton.setOnClickListener(this)
+
+        val settings = PreferenceManager.getDefaultSharedPreferences(this)
+        settings.registerOnSharedPreferenceChangeListener(this)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -97,37 +102,24 @@ class ChatterSendActivity : AppCompatActivity(), View.OnClickListener{ //, Share
         })
     }
 
-//    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-//        when (key) {
-//            "main_bg_color" -> {
-//                val settings = PreferenceManager.getDefaultSharedPreferences(this)
-//                val colorName : String? = settings.getString("main_bg_color","Yellow")
-//                val colorValue : Int = Color.parseColor(colorName)
-//                val layout = findViewById<LinearLayout>(R.id.activity_chatter_send_layout)
-//                layout.setBackgroundColor(colorValue)
-//
-//            }
-//            "main_bg_color_list" -> {
-//                val settings = PreferenceManager.getDefaultSharedPreferences(this)
-//                val colorName : String? = settings.getString("main_bg_color_list","Yellow")
-//                val colorValue : Int = Color.parseColor(colorName)
-//                val layout = findViewById<LinearLayout>(R.id.activity_chatter_send_layout)
-//                layout.setBackgroundColor(colorValue)
-//            }
-//        }
-//    }
-//
-//    override fun onResume() {
-//        super.onResume()
-//
-//        val settings = PreferenceManager.getDefaultSharedPreferences(this)
-//        settings.registerOnSharedPreferenceChangeListener(this)
-//    }
-//
-//    override fun onPause() {
-//        super.onPause()
-//
-//        val settings = PreferenceManager.getDefaultSharedPreferences(this)
-//        settings.unregisterOnSharedPreferenceChangeListener(this)
-//    }
+    override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
+        when (key) {
+            "main_bg_color" -> {
+                val settings = PreferenceManager.getDefaultSharedPreferences(this)
+                val colorName : String? = settings.getString("main_bg_color","Yellow")
+                val colorValue : Int = Color.parseColor(colorName)
+                val layout = findViewById<LinearLayout>(R.id.activity_chatter_send_layout)
+                layout.setBackgroundColor(colorValue)
+
+            }
+            "main_bg_color_list" -> {
+                val settings = PreferenceManager.getDefaultSharedPreferences(this)
+                val colorName : String? = settings.getString("main_bg_color_list","Yellow")
+                val colorValue : Int = Color.parseColor(colorName)
+                val layout = findViewById<LinearLayout>(R.id.activity_chatter_send_layout)
+                layout.setBackgroundColor(colorValue)
+            }
+        }
+    }
+
 }
