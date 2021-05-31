@@ -9,12 +9,24 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     val countrySpinner: Spinner by lazy { findViewById(R.id.countrySpinner) }
+    val provinceSpinner: Spinner by lazy { findViewById(R.id.provinceSpinner) }
+    var provinceAdapter: ProvinceStateAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         countrySpinner.onItemSelectedListener = this
+
+        val provinceList = mutableListOf<ProvinceState>()
+        provinceList.add(ProvinceState("Alberta","AB"))
+        provinceList.add(ProvinceState("British Columbia","BC"))
+        provinceList.add(ProvinceState("Saskatchewan","SK"))
+        provinceList.add(ProvinceState("Manitoba","MB"))
+
+        provinceAdapter = ProvinceStateAdapter(provinceList)
+        provinceSpinner.adapter = provinceAdapter
+
     }
 
     fun onSubmitButtonClick(view: View) {
