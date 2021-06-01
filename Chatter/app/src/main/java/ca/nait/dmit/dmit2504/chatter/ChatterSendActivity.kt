@@ -33,6 +33,11 @@ class ChatterSendActivity : AppCompatActivity(), View.OnClickListener, SharedPre
         val settings = PreferenceManager.getDefaultSharedPreferences(this)
         settings.registerOnSharedPreferenceChangeListener(this)
 
+
+        val colorName : String? = settings.getString("main_bg_color_list","Yellow")
+        val colorValue : Int = Color.parseColor(colorName)
+        val layout = findViewById<LinearLayout>(R.id.activity_chatter_send_layout)
+        layout.setBackgroundColor(colorValue)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

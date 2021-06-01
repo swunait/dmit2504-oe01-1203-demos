@@ -21,6 +21,11 @@ class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
         val settings = PreferenceManager.getDefaultSharedPreferences(this)
         settings.registerOnSharedPreferenceChangeListener(this)
 
+        val colorName : String? = settings.getString("main_bg_color_list","Yellow")
+        val colorValue : Int = Color.parseColor(colorName)
+        val layout = findViewById<FrameLayout>(R.id.activity_settings_layout)
+        layout.setBackgroundColor(colorValue)
+
     }
 
     override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
@@ -43,17 +48,4 @@ class SettingsActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
         }
     }
 
-//    override fun onResume() {
-//        super.onResume()
-//
-//        val settings = PreferenceManager.getDefaultSharedPreferences(this)
-//        settings.registerOnSharedPreferenceChangeListener(this)
-//    }
-//
-//    override fun onPause() {
-//        super.onPause()
-//
-//        val settings = PreferenceManager.getDefaultSharedPreferences(this)
-//        settings.unregisterOnSharedPreferenceChangeListener(this)
-//    }
 }
