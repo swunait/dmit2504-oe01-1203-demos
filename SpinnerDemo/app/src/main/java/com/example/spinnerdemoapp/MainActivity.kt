@@ -31,7 +31,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     fun onSubmitButtonClick(view: View) {
         val selectedCountry : String = countrySpinner.selectedItem as String
-        Toast.makeText(this,"You selected ${selectedCountry}", Toast.LENGTH_LONG).show()
+        val selectedProvinceState: ProvinceState = provinceSpinner.selectedItem as ProvinceState
+
+        Toast.makeText(this,"Country: ${selectedCountry}, Province: ${selectedProvinceState.name}", Toast.LENGTH_LONG).show()
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

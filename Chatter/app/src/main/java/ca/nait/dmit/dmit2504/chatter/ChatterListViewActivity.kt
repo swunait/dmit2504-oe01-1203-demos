@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.widget.ListView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,9 +21,14 @@ class ChatterListViewActivity : AppCompatActivity() {
 
     val TAG : String = "ChatterListViewActivity"
 
+    val jitterListView: ListView by lazy { findViewById(R.id.activity_chatter_list_view_listview) }
+    val jitterAdapter = JitterAdapter()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chatter_list_view)
+
+        jitterListView.adapter = jitterAdapter
 
         val retrofit = Retrofit.Builder()
             .baseUrl("http://www.youcode.ca/")
@@ -47,7 +53,7 @@ class ChatterListViewActivity : AppCompatActivity() {
                                 val date = reader.readLine()
                                 val currentJitter = Jitter(loginName,data,date)
                                 // call the addItem method of the data adapter
-
+                                jitterAdapter.addItem(currentJitter)
 
                                 line = reader.readLine()
                             } catch(e: Exception) {

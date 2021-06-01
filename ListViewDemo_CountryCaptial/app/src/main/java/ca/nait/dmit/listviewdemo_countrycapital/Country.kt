@@ -5,6 +5,6 @@ package ca.nait.dmit.listviewdemo_countrycapital
 // val country2 = Country()
 class Country(
     var name: String = "",
-    val capital: String = ""
+    var capital: String = ""
 ) {
 }

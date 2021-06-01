@@ -30,7 +30,8 @@ class CountryAdapter : BaseAdapter() {
         val countryTextView = inflatedView.findViewById<TextView>(R.id.list_item_countryTextView)
         val capitalTextView: TextView = inflatedView.findViewById(R.id.list_item_capitalTextView)
 
-        val currentCountry = countryList[position]
+        //val currentCountry = countryList[position]
+        val currentCountry = getItem(position) as Country
         countryTextView.text = currentCountry.name
         capitalTextView.text = currentCountry.capital
 
