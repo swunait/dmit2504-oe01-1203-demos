@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">RadioButtonDemo</string>
+    <string name="game_difficulty">Game Difficulty</string>
+    <string name="easy">Easy</string>
+    <string name="normal">Normal</string>
+    <string name="hard">Hard</string>
+    <string name="submit">Submit</string>
+
+</resources>
