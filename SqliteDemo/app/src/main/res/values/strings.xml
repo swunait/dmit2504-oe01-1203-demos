@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SqliteDemo</string>
+    <string name="expense_id">Expense ID</string>
+    <string name="description">Description</string>
+    <string name="amount">Amount</string>
+    <string name="date">Date</string>
 </resources>

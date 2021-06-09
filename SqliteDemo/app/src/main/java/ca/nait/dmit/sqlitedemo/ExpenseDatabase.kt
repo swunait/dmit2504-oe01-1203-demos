@@ -31,6 +31,16 @@ class ExpenseDatabase(context: Context)
             .plus("${TABLE_EXPENSE_COLUMN_DATE} TEXT);")
         )
 
+        db?.execSQL("INSERT INTO ${TABLE_EXPENSE_NAME} (${TABLE_EXPENSE_COLUMN_DESCRIPTION},${
+            TABLE_EXPENSE_COLUMN_AMOUNT}, ${
+            TABLE_EXPENSE_COLUMN_DATE}) VALUES('Item 1','1.11','2021-06-01')")
+        db?.execSQL("INSERT INTO ${TABLE_EXPENSE_NAME} (${TABLE_EXPENSE_COLUMN_DESCRIPTION},${
+            TABLE_EXPENSE_COLUMN_AMOUNT}, ${
+            TABLE_EXPENSE_COLUMN_DATE}) VALUES('Item 2','2.22','2021-06-02')")
+        db?.execSQL("INSERT INTO ${TABLE_EXPENSE_NAME} (${TABLE_EXPENSE_COLUMN_DESCRIPTION},${
+            TABLE_EXPENSE_COLUMN_AMOUNT}, ${
+            TABLE_EXPENSE_COLUMN_DATE}) VALUES('Item 3','3.33','2021-06-03')")
+
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
