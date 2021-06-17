@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ExerciseGuessTheNumber</string>
+    <string name="guess_a_number_between">Guess a number between</string>
+    <string name="min_and_max">%d and %d</string>
+    <string name="enter_your_guess">enter your guess</string>
+    <string name="ok">OK</string>
+    <string name="your_guess_is">Your guess is %s</string>
+    <string name="number_of_guesses">Number of guesses: %d</string>
+</resources>

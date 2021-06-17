@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/guess_a_number_between"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <TextView
+        android:id="@+id/activity_main_range_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/min_and_max"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <EditText
+        android:id="@+id/activity_main_guess_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/enter_your_guess"
+        android:inputType="number"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/activity_main_guess_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ok"
+        android:onClick="onGuessButtonClick"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:id="@+id/activity_main_guessresult_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/your_guess_is"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <TextView
+        android:id="@+id/activity_main_guesscount_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/number_of_guesses"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_gravity="center_horizontal"
+        />
+
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 package ca.nait.dmit.sqlitedemo
 
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -14,9 +15,31 @@ class MainActivity : AppCompatActivity() {
     private val dateEditText : EditText by lazy { findViewById(R.id.activity_main_date_edittext) }
     private val expensesListView: ListView by lazy { findViewById(R.id.activity_main_expenses_listview) }
 
+    private var editMode = false
+    private var editId = 0L
+    private val addButton : Button by lazy { findViewById(R.id.activity_main_add_button) }
+    private val updateButton : Button by lazy { findViewById(R.id.activity_main_update_button) }
+    private val cancelButton: Button by lazy { findViewById(R.id.activity_main_cancel_Button) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Hide the update and cancel button
+        updateButton.visibility = View.GONE
+        cancelButton.visibility = View.GONE
+
+        // Allow the user to edit an item when an item is clicked on in the list view
+        expensesListView.setOnItemClickListener(AdapterView.OnItemClickListener {
+            parent, view, position, id ->
+
+
+            editMode = true
+            updateButton.visibility = View.VISIBLE
+            cancelButton.visibility = View.VISIBLE
+            addButton.visibility = View.GONE
+
+        })
 
 //        Toast.makeText(this,"${expenseDatabase.expenses.count} records in db", Toast.LENGTH_LONG).show()
         rebindExpensesListView()
@@ -26,8 +49,13 @@ class MainActivity : AppCompatActivity() {
         val description = descriptionEditText.text.toString()
         val amount = amountEditText.text.toString()
         val date = dateEditText.text.toString()
-        val expenseId = expenseDatabase.createExpense(description, amount, date)
-        Toast.makeText(this, "Created expense id ${expenseId}", Toast.LENGTH_SHORT).show()
+        val newExpense = Expense()
+        newExpense.description = description
+        newExpense.amount = amount
+        newExpense.date = date
+        //val expenseId = expenseDatabase.createExpense(description, amount, date)
+        val expenseId = expenseDatabase.createExpense(newExpense)
+        //Toast.makeText(this, "Created expense id ${expenseId}", Toast.LENGTH_SHORT).show()
         rebindExpensesListView()
     }
 
@@ -42,5 +70,16 @@ class MainActivity : AppCompatActivity() {
         val expensesCursorAdapter = SimpleCursorAdapter(this, R.layout.list_item_expenses, expensesCursor, fromColumnNames, toViewResourceIds, 0)
         // Set the adapter for the ListView
         expensesListView.adapter = expensesCursorAdapter
+    }
+
+    fun onUpdateExpenseClick(view: View) {
+
+        onCancelClick(view)
+    }
+    fun onCancelClick(view: View) {
+        editMode = false
+        updateButton.visibility = View.GONE
+        cancelButton.visibility = View.GONE
+        addButton.visibility = View.VISIBLE
     }
 }

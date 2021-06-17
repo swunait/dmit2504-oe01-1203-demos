@@ -38,12 +38,32 @@
         android:inputType="date"
         android:hint="date" />
 
-    <Button
-        android:id="@+id/activity_main_add_button"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onAddExpenseClick"
-        android:text="Add Expense" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/activity_main_add_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onAddExpenseClick"
+            android:text="Add Expense" />
+
+        <Button
+            android:id="@+id/activity_main_update_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onUpdateExpenseClick"
+            android:text="Update Expense" />
+
+        <Button
+            android:id="@+id/activity_main_cancel_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onCancelClick"
+            android:text="Cancel" />
+    </LinearLayout>
 
     <ListView
         android:id="@+id/activity_main_expenses_listview"
