@@ -9,7 +9,7 @@ import android.provider.BaseColumns
 
 // Step 1: Create a class that inherits from SQLiteOpenHelper
 class ExpenseDatabase(context: Context)
-    : SQLiteOpenHelper(context,DATABASE_NAME,null,DATABASE_VERSION) {
+    : SQLiteOpenHelper(context, DATABASE_NAME,null, DATABASE_VERSION) {
 
         // Step 2: Define constants for database name, database version, table name, column names
         companion object {
@@ -110,17 +110,23 @@ class ExpenseDatabase(context: Context)
             .plus("${TABLE_EXPENSE_COLUMN_AMOUNT}, ")
             .plus("${TABLE_EXPENSE_COLUMN_DATE} ")
             .plus(" FROM ${TABLE_EXPENSE_NAME} ")
-            .plus(" ORDER BY ${TABLE_EXPENSE_COLUMN_DATE} DESC ")
             .plus(" WHERE ${BaseColumns._ID} = ?")
+            .plus(" ORDER BY ${TABLE_EXPENSE_COLUMN_DATE} DESC ")
         val resultCursor = readableDatabase.rawQuery(queryStatement, arrayOf(id.toString()))
         // Cursor should contain exactly one result
         if (resultCursor.count == 1) {
             resultCursor.moveToFirst()
             existingExpense = Expense()
-            existingExpense.id = resultCursor.getLong(0)
-            existingExpense.description = resultCursor.getString(1)
-            existingExpense.amount = resultCursor.getString(2)
-            existingExpense.date = resultCursor.getString(3)
+//            existingExpense.id = resultCursor.getLong(resultCursor.getColumnIndexOrThrow("${BaseColumns._ID}"))
+//            existingExpense.description = resultCursor.getString(resultCursor.getColumnIndexOrThrow("${TABLE_EXPENSE_COLUMN_DESCRIPTION}"))
+//            existingExpense.amount = resultCursor.getString(resultCursor.getColumnIndexOrThrow("${TABLE_EXPENSE_COLUMN_AMOUNT}"))
+//            existingExpense.date = resultCursor.getString(resultCursor.getColumnIndexOrThrow("${TABLE_EXPENSE_COLUMN_DATE}"))
+            with(resultCursor) {
+                existingExpense.id = getLong(getColumnIndexOrThrow("${BaseColumns._ID}"))
+                existingExpense.description = getString(getColumnIndexOrThrow("${TABLE_EXPENSE_COLUMN_DESCRIPTION}"))
+                existingExpense.amount = getString(getColumnIndexOrThrow("${TABLE_EXPENSE_COLUMN_AMOUNT}"))
+                existingExpense.date = getString(getColumnIndexOrThrow("${TABLE_EXPENSE_COLUMN_DATE}"))
+            }
         }
         return existingExpense
     }

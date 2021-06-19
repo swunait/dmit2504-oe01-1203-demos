@@ -41,21 +41,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        >
 
         <Button
             android:id="@+id/activity_main_add_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onAddExpenseClick"
-            android:text="Add Expense" />
+            android:text="Add" />
 
         <Button
             android:id="@+id/activity_main_update_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="onUpdateExpenseClick"
-            android:text="Update Expense" />
+            android:text="Update"
+            android:layout_marginRight="16dp"/>
+
+        <Button
+            android:id="@+id/activity_main_delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:onClick="onDeleteExpenseClick"
+            android:layout_marginRight="16dp"
+            />
 
         <Button
             android:id="@+id/activity_main_cancel_Button"
