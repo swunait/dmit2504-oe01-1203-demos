@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Message"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_gravity="center_horizontal"/>
+
+    <EditText
+        android:id="@+id/activity_main_message_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:gravity="top"
+        android:inputType="textPersonName"
+        android:hint="message to send to server" />
+
+    <Button
+        android:id="@+id/activity_main_post_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post Message"
+        android:textAllCaps="false"
+        android:onClick="onPostMessageButtonClick"
+        android:layout_gravity="center_horizontal"/>
+
+
+</LinearLayout>
