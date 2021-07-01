@@ -22,4 +22,9 @@
         android:text="Sync DB"
         android:onClick="onSyncButtonClick"/>
 
+    <ListView
+        android:id="@+id/activity_main_jitters_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
