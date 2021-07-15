@@ -1,9 +1,12 @@
 package ca.nait.dmit.sqlitedemo
 
+import android.content.Intent
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Gravity
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.*
 
@@ -131,6 +134,25 @@ class MainActivity : AppCompatActivity() {
             onCancelClick(view)
         } else {
             Toast.makeText(this,"Delete was not successful", Toast.LENGTH_LONG).show()
+        }
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_activity_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_item_expenselist -> {
+                val expenseListIntent = Intent(this, ExpenseListActivity::class.java)
+                startActivity(expenseListIntent)
+                return true
+            }
+            else ->  {
+                return super.onOptionsItemSelected(item)
+            }
         }
 
     }

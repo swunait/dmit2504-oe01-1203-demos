@@ -24,11 +24,12 @@ class ExpenseDatabase(context: Context)
     // Step 3: Create the tables in onCreate() and drop the tables in onUpgrade()
     override fun onCreate(db: SQLiteDatabase?) {
         // execute SQL statements to create required database tables
-        db?.execSQL("CREATE TABLE ${TABLE_EXPENSE_NAME} "
-            .plus("( ${BaseColumns._ID} INTEGER PRIMARY KEY, ")
-            .plus("${TABLE_EXPENSE_COLUMN_DESCRIPTION} TEXT, ")
-            .plus("${TABLE_EXPENSE_COLUMN_AMOUNT} TEXT, ")
-            .plus("${TABLE_EXPENSE_COLUMN_DATE} TEXT);")
+        db?.execSQL("CREATE TABLE ${TABLE_EXPENSE_NAME} ("
+            .plus(" ${BaseColumns._ID} INTEGER PRIMARY KEY, ")
+            .plus(" ${TABLE_EXPENSE_COLUMN_DESCRIPTION} TEXT, ")
+            .plus(" ${TABLE_EXPENSE_COLUMN_AMOUNT} TEXT, ")
+            .plus(" ${TABLE_EXPENSE_COLUMN_DATE} TEXT")
+            .plus(")")
         )
 
         db?.execSQL("INSERT INTO ${TABLE_EXPENSE_NAME} (${TABLE_EXPENSE_COLUMN_DESCRIPTION},${
