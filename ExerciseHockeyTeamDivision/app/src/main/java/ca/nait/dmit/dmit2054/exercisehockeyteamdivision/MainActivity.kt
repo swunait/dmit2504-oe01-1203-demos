@@ -4,10 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.BaseColumns
 import android.view.View
-import android.widget.EditText
-import android.widget.SimpleCursorAdapter
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,9 +15,28 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        divisionSpinner.setOnItemClickListener { parent, view, position, id ->
+        divisionSpinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val divisionId = id.toInt()
+                val db = HockeyDatabase(this@MainActivity)
+                val queryResultCursor = db.findDivisionById(divisionId)
+                if (queryResultCursor.moveToNext()) {
+                    val divisionName = queryResultCursor.getString(queryResultCursor.getColumnIndexOrThrow(HockeyDatabase.DivisionContract.DivisionEntry.COLUMN_NAME_NAME))
+                    Toast.makeText(this@MainActivity,"Your selected $divisionName",Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this@MainActivity,"No query results returned.",Toast.LENGTH_SHORT).show()
+                }
+            }
 
-            Toast.makeText(this,"Your selected",Toast.LENGTH_SHORT).show()
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
         }
 
         rebindDivisionSpinner()
@@ -34,6 +50,7 @@ class MainActivity : AppCompatActivity() {
             if (rowId > 0) {
                 divisionNameEditText.setText("")
                 Toast.makeText(this,"Division Name added to database", Toast.LENGTH_SHORT).show()
+                rebindDivisionSpinner()
             } else {
                 Toast.makeText(this,"Error adding name to database", Toast.LENGTH_SHORT).show()
             }
@@ -50,4 +67,6 @@ class MainActivity : AppCompatActivity() {
         val divisionAdapter = SimpleCursorAdapter(this,android.R.layout.simple_spinner_item,divisionCursor, columnNames, viewIds, 0)
         divisionSpinner.adapter = divisionAdapter
     }
+
+
 }

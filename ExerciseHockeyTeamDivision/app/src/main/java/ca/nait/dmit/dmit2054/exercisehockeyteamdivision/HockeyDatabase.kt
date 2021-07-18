@@ -78,4 +78,35 @@ class HockeyDatabase(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return resultCursor
     }
 
+    fun findDivisionById(id: Int): Cursor {
+        // Define the array of column names to return
+        val projection = arrayOf(
+            BaseColumns._ID,
+            DivisionContract.DivisionEntry.COLUMN_NAME_NAME,
+        )
+        // Define the WHERE clause
+        val selection: String? = "${BaseColumns._ID} = ?"
+        // Define the parameter values for the WHERE clause
+        val selectionArgs: Array<String>? = arrayOf(id.toString())
+        // Define the GROUP BY clause
+        val groupBy: String? = null
+        // Define the HAVING clause
+        val having: String? = null
+        // Define ORDER BY clause
+        val sortOrder = "${DivisionContract.DivisionEntry.COLUMN_NAME_NAME} "
+        // Get a readable database
+        val db = readableDatabase
+        // Execute query and store cursor result
+        val resultCursor = db.query(
+            DivisionContract.DivisionEntry.TABLE_NAME,
+            projection,
+            selection,
+            selectionArgs,
+            groupBy,
+            having,
+            sortOrder
+        )
+        return resultCursor
+    }
+
 }
